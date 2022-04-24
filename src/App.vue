@@ -1,17 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <TableCosts :tableData="tableData" />
+    <TableAdd @addNewPayment="addNewPayment"/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TableCosts from "./components/TableCosts.vue";
+import TableAdd from "./components/TableAdd.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    TableCosts,
+    TableAdd,
+  },
+  data () {
+    return {
+      tableData: [{"id": 0, "date": "01/02/2020", "category": "Еда", "price": 100}]
+    }
+  },
+  methods: {
+    addNewPayment(NewPayment) {
+      let item = NewPayment;
+      item.id = +this.tableData.length
+      this.tableData.push(item)
+    }
   }
-}
+};
 </script>
 
 <style>
