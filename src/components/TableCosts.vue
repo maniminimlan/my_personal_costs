@@ -18,10 +18,9 @@
 <script>
 export default {
   name: "TableCosts",
-  props: ["tableData"],
+  props: ["tableData", "tableHead"],
   data() {
     return {
-      tableHead: ["id", "date", "category", "price"],
     };
   },
 };
